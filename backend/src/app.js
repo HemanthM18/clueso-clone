@@ -8,6 +8,8 @@ require('./config/passport');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 
+const feedbackRoutes = require('./routes/feedbackRoutes');
+
 const app = express();
 
 app.use(cors());
@@ -18,6 +20,8 @@ app.use(passport.initialize());
 connectDB();
 
 app.use('/api/auth', authRoutes);
+
+app.use('/api/feedback', feedbackRoutes);
 
 app.get('/', (req, res) => {
   res.send('Clueso Backend API running');
