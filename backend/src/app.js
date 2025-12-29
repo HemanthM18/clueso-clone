@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
+const passport = require('passport');
+require('./config/passport');
+
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 
@@ -9,6 +12,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(passport.initialize());
 
 connectDB();
 
