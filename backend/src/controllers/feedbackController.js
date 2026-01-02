@@ -4,17 +4,19 @@ exports.createFeedback = async (req, res) => {
   try {
     const { content } = req.body;
 
-    if (!content) {
-      return res.status(400).json({ message: 'Feedback required' });
+    // Validate input
+    if (!content || !content.trim()) {
+      return res.status(400).json({ message: 'Feedback cannot be empty' });
     }
 
     const feedback = await Feedback.create({
       user: req.user._id,
-      content,
+      content: content.trim(),
     });
 
     res.status(201).json(feedback);
   } catch (error) {
+    console.error('Create Feedback Error:', error);
     res.status(500).json({ message: 'Failed to create feedback' });
   }
 };
@@ -24,8 +26,9 @@ exports.getFeedbacks = async (req, res) => {
     const feedbacks = await Feedback.find({ user: req.user._id })
       .sort({ createdAt: -1 });
 
-    res.json(feedbacks);
+    res.status(200).json(feedbacks);
   } catch (error) {
+    console.error('Get Feedback Error:', error);
     res.status(500).json({ message: 'Failed to fetch feedback' });
   }
 };

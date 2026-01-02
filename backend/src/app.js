@@ -10,6 +10,8 @@ const authRoutes = require('./routes/authRoutes');
 
 const feedbackRoutes = require('./routes/feedbackRoutes');
 
+const insightsRoutes = require('./routes/insightsRoutes');
+
 const app = express();
 
 app.use(cors());
@@ -22,6 +24,8 @@ connectDB();
 app.use('/api/auth', authRoutes);
 
 app.use('/api/feedback', feedbackRoutes);
+
+app.use('/api/insights', insightsRoutes);
 
 app.get('/', (req, res) => {
   res.send('Clueso Backend API running');
