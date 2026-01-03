@@ -70,7 +70,7 @@ clueso-clone/
 │
 ├── Outputs/
 │   ├── DOM_events.json
-│   └── backend-run.mp4
+│   └── frontend-backend-run.mp4
 │
 └── README.md
 ```

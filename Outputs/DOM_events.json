@@ -1,0 +1,37 @@
+{
+  "page": "Dashboard",
+  "events": [
+    {
+      "event": "page_load",
+      "description": "Dashboard loaded after successful authentication",
+      "timestamp": "2024-03-25T10:00:00Z"
+    },
+    {
+      "event": "feedback_input",
+      "description": "User typed feedback in textarea",
+      "component": "SubmitFeedback",
+      "value_sample": "The dashboard UI is clean but could load faster."
+    },
+    {
+      "event": "feedback_submit",
+      "description": "User submitted feedback",
+      "api_called": "POST /api/feedback",
+      "auth": "JWT Protected"
+    },
+    {
+      "event": "feedback_fetch",
+      "description": "Fetch all feedback for logged-in user",
+      "api_called": "GET /api/feedback"
+    },
+    {
+      "event": "ai_insights_fetch",
+      "description": "AI insights generated based on feedback",
+      "api_called": "GET /api/insights",
+      "result": ["User Interface", "Performance"]
+    },
+    {
+      "event": "logout",
+      "description": "User logged out and session cleared"
+    }
+  ]
+}
